@@ -10,9 +10,9 @@ import android.os.Process;
  */
 public class GooglePalyAppclication extends Application {
 
-    private Context mContext;
-    private Handler mHandler;
-    private int mMyTid;
+    private static Context mContext;
+    private static Handler mHandler;
+    private static int mMyTid;
 
     @Override
     public void onCreate() {
@@ -22,15 +22,15 @@ public class GooglePalyAppclication extends Application {
         mMyTid = Process.myTid();//返回当前线程的id
     }
 
-    public Context getContext() {
+    public static Context getContext() {
         return mContext;
     }
 
-    public Handler getHandler() {
+    public static Handler getHandler() {
         return mHandler;
     }
 
-    public int getMyTid() {
+    public static int getMyTid() {
         return mMyTid;
     }
 }
