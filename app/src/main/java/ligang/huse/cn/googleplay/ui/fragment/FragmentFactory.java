@@ -7,40 +7,37 @@ import java.util.HashMap;
  */
 public class FragmentFactory {
 
-    private static BaseFragment baseFragment;
-
+    private static HashMap  <Integer,BaseFragment>maps=new HashMap<>();
     public static BaseFragment createFragment(int pos) {
-        baseFragment = null;
-        HashMap<Integer,BaseFragment>maps=new HashMap<>();
-        BaseFragment fragment = maps.get(pos);
+          BaseFragment fragment = maps.get(pos);
         if(fragment==null) {
             switch (pos) {
                 case 0:
-                    FragmentFactory.baseFragment = new HomeFragment();
+                    fragment = new HomeFragment();
                     break;
                 case 1:
-                    FragmentFactory.baseFragment = new AppFragment();
+                    fragment = new AppFragment();
                     break;
                 case 2:
-                    FragmentFactory.baseFragment = new GameFragment();
+                    fragment = new GameFragment();
                     break;
                 case 3:
-                    FragmentFactory.baseFragment = new sbujectFragment();
+                    fragment = new sbujectFragment();
                     break;
                 case 4:
-                    FragmentFactory.baseFragment = new RecommenFragment();
+                    fragment = new RecommenFragment();
                     break;
                 case 5:
-                    FragmentFactory.baseFragment = new CategoryFragment();
+                    fragment = new CategoryFragment();
                     break;
                 case 6:
-                    FragmentFactory.baseFragment = new HotFragment();
+                    fragment = new HotFragment();
                     break;
             }
-            maps.put(pos,baseFragment);
+            maps.put(pos,fragment);
         }
 
-        return FragmentFactory.baseFragment;
+        return fragment;
     }
 
 

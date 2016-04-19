@@ -28,11 +28,30 @@ public class MainActivity extends BaseActivity {
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
         mPagerTab.setViewPager(mViewPager);
+        mPagerTab.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                BaseFragment fragment = FragmentFactory
+                        .createFragment(position);
+                // 开始加载数据
+                fragment.loadData();
+            }
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset,
+                                       int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
 
     class MyAdapter extends FragmentPagerAdapter {
 
-        private final String[] mArray;
+        private  String[] mArray;
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

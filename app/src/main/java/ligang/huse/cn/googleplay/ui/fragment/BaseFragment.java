@@ -5,22 +5,46 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import ligang.huse.cn.googleplay.ui.view.LoadingPager;
 import ligang.huse.cn.googleplay.utils.UiUitls;
+import  ligang.huse.cn.googleplay.ui.view.LoadingPager.ResultState;
 
 /**
- * Created by 2 on 2016/4/17.
  */
-public class BaseFragment extends Fragment {
+public  abstract  class BaseFragment extends Fragment {
+
+    private LoadingPager mloadingPager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // 使用textview显示当前类的类名
-        TextView view = new TextView(UiUitls.getContex());
-        view.setText(getClass().getSimpleName());
-        return view;
+        //TextView view = new TextView(UiUitls.getContex());
+        //view.setText(getClass().getSimpleName());
+        //继续让他的子类实现创建view
+        mloadingPager = new LoadingPager(UiUitls.getContex()) {
+
+            @Override
+            public View onCreateSuccessView() {
+                return BaseFragment.this.onCreateSuccessView();//继续让他的子类实现创建view
+            }
+            @Override
+            public ResultState onLoad() {
+                return BaseFragment.this.onLoad();
+            }
+        };
+        return mloadingPager;
 
     }
 
+
+    public abstract ResultState onLoad();
+    public abstract View onCreateSuccessView();
+    // 开始加载数据
+    public void loadData() {
+        if (mloadingPager != null) {
+            mloadingPager.loadData();
+        }
+    }
 }
