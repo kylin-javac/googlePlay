@@ -1,13 +1,11 @@
 package com.google.server;
 
 import org.eclipse.jetty.server.Request;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class DefaultHandler extends org.eclipse.jetty.server.handler.DefaultHandler {
 

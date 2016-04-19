@@ -1,6 +1,7 @@
 package ligang.huse.cn.googleplay.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Process;
@@ -52,9 +53,9 @@ public class UiUitls {
 
 
     //dp转px
-    public static int dipToPx(float dip) {
+    public static int dipTopx(float dip) {
         float density = getContex().getResources().getDisplayMetrics().density;
-        return (int) (density * dip + 0.5f);
+        return (int) (density * dip + 0.5);
     }
 
     //px转dp
@@ -91,4 +92,7 @@ public class UiUitls {
     }
 
 
+    public static ColorStateList getColorStateList(int Id) {
+       return getContex().getResources().getColorStateList(Id);
+    }
 }
