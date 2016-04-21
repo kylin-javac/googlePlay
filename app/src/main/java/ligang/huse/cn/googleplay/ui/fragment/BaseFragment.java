@@ -6,13 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import ligang.huse.cn.googleplay.ui.view.LoadingPager;
 import ligang.huse.cn.googleplay.utils.UiUitls;
-import  ligang.huse.cn.googleplay.ui.view.LoadingPager.ResultState;
+import ligang.huse.cn.googleplay.ui.view.LoadingPager.ResultState;
 
 /**
  */
-public  abstract  class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private LoadingPager mloadingPager;
 
@@ -29,6 +31,7 @@ public  abstract  class BaseFragment extends Fragment {
             public View onCreateSuccessView() {
                 return BaseFragment.this.onCreateSuccessView();//继续让他的子类实现创建view
             }
+
             @Override
             public ResultState onLoad() {
                 return BaseFragment.this.onLoad();
@@ -40,11 +43,27 @@ public  abstract  class BaseFragment extends Fragment {
 
 
     public abstract ResultState onLoad();
+
     public abstract View onCreateSuccessView();
+
     // 开始加载数据
     public void loadData() {
         if (mloadingPager != null) {
             mloadingPager.loadData();
         }
+    }
+
+    public LoadingPager.ResultState check(Object obj) {
+        if (obj != null) {
+            if (obj instanceof ArrayList) {
+                ArrayList list = (ArrayList) obj;
+                if (list.isEmpty()) {
+                    return LoadingPager.ResultState.STATE_EMPTY;
+                } else {
+                    return LoadingPager.ResultState.STATE_SUCCESS;
+                }
+            }
+        }
+        return LoadingPager.ResultState.STATE_ERROR;
     }
 }

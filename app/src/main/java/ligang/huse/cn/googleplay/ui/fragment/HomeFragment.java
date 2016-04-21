@@ -1,8 +1,16 @@
 package ligang.huse.cn.googleplay.ui.fragment;
 
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import ligang.huse.cn.googleplay.domain.AppInfo;
+import ligang.huse.cn.googleplay.http.protocol.HomeProtocol;
+import ligang.huse.cn.googleplay.ui.Adapter.MyBaseAdapter;
+import ligang.huse.cn.googleplay.ui.holder.BaseHolder;
+import ligang.huse.cn.googleplay.ui.holder.HomeHolder;
 import ligang.huse.cn.googleplay.ui.view.LoadingPager;
 import ligang.huse.cn.googleplay.utils.UiUitls;
 
@@ -12,14 +20,49 @@ import ligang.huse.cn.googleplay.utils.UiUitls;
 public class HomeFragment extends BaseFragment {
 
 
+    private ArrayList<AppInfo> mData;
+
     @Override
     public View onCreateSuccessView() {
-        TextView view = new TextView(UiUitls.getContex());
-        view.setText(getClass().getSimpleName());
-        return  view;
+        ListView listView = new ListView(UiUitls.getContex());
+        listView.setAdapter(new HomeAdapter(mData));
+        return listView;
     }
+
     @Override
     public LoadingPager.ResultState onLoad() {
-        return LoadingPager.ResultState.STATE_SUCCESS;
+        HomeProtocol protocol = new HomeProtocol();
+        mData = protocol.getData(0);
+
+        return check(mData);
     }
+
+
+    class HomeAdapter extends MyBaseAdapter<AppInfo> {
+        public HomeAdapter(ArrayList data) {
+            super(data);
+        }
+
+        @Override
+        public BaseHolder<AppInfo> getHolder() {
+            return new HomeHolder();
+        }
+
+        @Override
+        public ArrayList<AppInfo> onloadMore() {
+            HomeProtocol protocol = new HomeProtocol();
+            return protocol.getData(getDataSize());
+        }
+
+        @Override
+        public boolean hasMore() {
+            return true;
+        }
+    }
+
+    static class ViewHolder {
+        TextView tv_content;
+    }
+
+
 }
