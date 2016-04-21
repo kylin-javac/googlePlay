@@ -4,5 +4,105 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/list_item_bg_select"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_con"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/ic_empty_page"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/iv_con"
+                android:text="应用市场"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/iv_con"
+                android:text="3.77M"
+                android:textSize="16sp"
+                />
+
+            <RatingBar
+                android:isIndicator="true"
+                android:id="@+id/rb_start"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_below="@+id/tv_size"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/iv_con"
+                android:progressDrawable="@drawable/custom_rating_bar"
+                android:rating="2"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/ic_download"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/iv_con"
+                    android:text="下载"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginTop="5dp"
+            android:background="#8000"/>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/iv_con"
+            android:singleLine="true"
+            android:text="应用市场爱上当减肥还是短发好看大家撒返回来看书的法律大卷发了灰色的飞洒记得发货数量的反馈"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

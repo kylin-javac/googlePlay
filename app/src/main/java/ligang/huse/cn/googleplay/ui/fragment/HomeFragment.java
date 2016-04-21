@@ -1,7 +1,6 @@
 package ligang.huse.cn.googleplay.ui.fragment;
 
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import ligang.huse.cn.googleplay.ui.Adapter.MyBaseAdapter;
 import ligang.huse.cn.googleplay.ui.holder.BaseHolder;
 import ligang.huse.cn.googleplay.ui.holder.HomeHolder;
 import ligang.huse.cn.googleplay.ui.view.LoadingPager;
+import ligang.huse.cn.googleplay.ui.view.MyListView;
 import ligang.huse.cn.googleplay.utils.UiUitls;
 
 /**
@@ -24,7 +24,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public View onCreateSuccessView() {
-        ListView listView = new ListView(UiUitls.getContex());
+        MyListView listView = new MyListView(UiUitls.getContex());
         listView.setAdapter(new HomeAdapter(mData));
         return listView;
     }

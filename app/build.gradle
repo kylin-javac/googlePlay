@@ -31,4 +31,5 @@ dependencies {
     compile files('libs/fluent-hc-4.2.5.jar')
     compile files('libs/commons-logging-1.1.1.jar')
     compile files('libs/commons-codec-1.6.jar')
+    compile 'com.jiechic.library:xUtils:2.6.14'
 }

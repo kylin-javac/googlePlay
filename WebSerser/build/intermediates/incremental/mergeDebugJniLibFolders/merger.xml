@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\F\Android_Studio\googlePlay\WebSerser\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\F\Android_Studio\googlePlay\WebSerser\build-types\debug\jniLibs"/></dataSet></merger>

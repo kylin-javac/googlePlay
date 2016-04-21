@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="18"
+    density="xhdpi"
+    format="7"
+    timestamp="51472310244773" >
+
+    <task
+        name="javac"
+        duration="10620" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="1181" />
+    <task
+        name="verifier"
+        duration="145" />
+
+    <artifact
+        location="D:\F\Android_Studio\googlePlay\WebSerser\build\outputs\apk\WebSerser-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="51472310244773" >
+        <artifact
+            location="D:\F\Android_Studio\googlePlay\WebSerser\build\outputs\apk\WebSerser-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>
