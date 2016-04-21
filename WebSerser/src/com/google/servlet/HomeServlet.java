@@ -1,5 +1,8 @@
 package com.google.servlet;
 
+import android.os.Environment;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,8 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import android.os.Environment;
-
 public class HomeServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +20,7 @@ public class HomeServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setStatus(HttpServletResponse.SC_OK);
 		String path0 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "WebInfos/app/homelist0";
+		Log.i("----------->", path0);
 		String path1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "WebInfos/app/homelist1";
 		String path2 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "WebInfos/app/homelist2";
 		String path3 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + "WebInfos/app/homelist3";
