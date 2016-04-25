@@ -9,7 +9,6 @@ public class BitmapsUtilsHelper {
     private static BitmapUtils bitmapUitls = null;
 
     public static synchronized BitmapUtils getInstance() {
-
         if (bitmapUitls == null) {
             bitmapUitls = new BitmapUtils(UiUitls.getContex());
         }

@@ -17,7 +17,7 @@ import ligang.huse.cn.googleplay.utils.UiUitls;
 /**
  * Created by 2 on 2016/4/20.
  */
-public class HomeHolder extends BaseHolder<AppInfo> {
+public class AppHolder extends BaseHolder<AppInfo> {
     private ImageView mIvCon;
     private TextView mTvName;
     private TextView mTvSize;

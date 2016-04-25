@@ -33,7 +33,6 @@ public class HomeFragment extends BaseFragment {
     public LoadingPager.ResultState onLoad() {
         HomeProtocol protocol = new HomeProtocol();
         mData = protocol.getData(0);
-
         return check(mData);
     }
 

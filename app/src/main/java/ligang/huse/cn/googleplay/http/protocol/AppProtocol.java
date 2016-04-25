@@ -11,15 +11,15 @@ import ligang.huse.cn.googleplay.domain.AppInfo;
 /**
  * Created by 2 on 2016/4/20.
  */
-public class HomeProtocol extends BaseProtocol<ArrayList<AppInfo>> {
-    ArrayList<AppInfo> appInfos = new ArrayList<>();
+public class AppProtocol extends BaseProtocol<ArrayList<AppInfo>> {
+
 
     @Override
     public ArrayList<AppInfo> ParseData(String result) {
         try {
-            JSONObject jO = new JSONObject(result);
-            JSONArray ja = jO.getJSONArray("list");
-            for (int i = 0; i < ja.length(); i++) {
+            ArrayList<AppInfo> appInfos = new ArrayList<>();
+            JSONArray ja = new JSONArray(result);
+            for(int i=0;i<ja.length();i++){
                 JSONObject jO1 = ja.getJSONObject(i);
                 AppInfo info = new AppInfo();
                 info.setDes(jO1.getString("des"));
@@ -32,15 +32,16 @@ public class HomeProtocol extends BaseProtocol<ArrayList<AppInfo>> {
                 info.setStars(jO1.getDouble("stars"));
                 appInfos.add(info);
             }
+            return appInfos;
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return appInfos;
+       return  null;
     }
 
     @Override
     public String getKey() {
-        return "home";
+        return "app";
     }
 
     @Override

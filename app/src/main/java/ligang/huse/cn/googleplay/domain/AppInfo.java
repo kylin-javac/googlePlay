@@ -1,7 +1,7 @@
 package ligang.huse.cn.googleplay.domain;
 
 /**
- *
+ *AppIfo首页json的javabean
  */
 public class AppInfo {
     /**

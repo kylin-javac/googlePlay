@@ -3,6 +3,7 @@ package ligang.huse.cn.googleplay.ui.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import ligang.huse.cn.googleplay.R;
@@ -50,6 +51,14 @@ public abstract class LoadingPager extends FrameLayout {
         if (mLodingerror == null) {
             mLodingerror = UiUitls.inflat(R.layout.pager_error);
             addView(mLodingerror);
+            Button btn_retry = (Button) findViewById(R.id.btn_retry);
+            //加载失败后重新加载数据
+            btn_retry.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadData();
+                }
+            });
         }
 
         if (mMLoadingempty == null) {
@@ -114,9 +123,6 @@ public abstract class LoadingPager extends FrameLayout {
             }.start();
         }
     }
-
-
-
 
 
     public abstract View onCreateSuccessView();//让子类实现去创建view
