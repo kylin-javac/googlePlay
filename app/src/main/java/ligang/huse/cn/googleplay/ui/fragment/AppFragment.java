@@ -30,6 +30,7 @@ public class AppFragment extends BaseFragment {
     public LoadingPager.ResultState onLoad() {
         AppProtocol protocol = new AppProtocol();
         mData = protocol.getData(0);
+
         return check(mData);
     }
 
@@ -40,7 +41,7 @@ public class AppFragment extends BaseFragment {
         }
 
         @Override
-        public BaseHolder<AppInfo> getHolder() {
+        public BaseHolder<AppInfo> getHolder(int position) {
             AppHolder holder = new AppHolder();
             return holder;
         }

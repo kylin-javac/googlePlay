@@ -51,7 +51,7 @@
                 android:isIndicator="true"
                 android:id="@+id/rb_start"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="18dp"
                 android:layout_below="@+id/tv_size"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="3dp"
@@ -73,7 +73,7 @@
                     android:id="@+id/iv_download"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_download"/>
+                    android:background="@drawable/ic_download"/>
 
                 <TextView
                     android:layout_width="wrap_content"

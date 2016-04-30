@@ -16,8 +16,8 @@ import ligang.huse.cn.googleplay.utils.UiUitls;
  */
 public abstract class MyBaseAdapter<T> extends BaseAdapter {
     private ArrayList<T> data;
-    public static final int TYPE_NORMAL = 0;//正常加载
-    public static final int TYPE_MORE = 1;//加载更多
+    public static final int TYPE_NORMAL = 1;//正常加载
+    public static final int TYPE_MORE = 0;//加载更多
 
     public MyBaseAdapter(ArrayList<T> data) {
         this.data = data;
@@ -51,12 +51,12 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         if (position == getCount() - 1) {
             return TYPE_MORE;
         } else {
-            return getInnerType();
+            return getInnerType(position);
         }
     }
 
 
-    public int getInnerType() {//对外提供一个返回类型的方法，因为有时候listview中不止显示两种布局文件
+    public int getInnerType(int posotion) {//对外提供一个返回类型的方法，因为有时候listview中不止显示两种布局文件
         return TYPE_NORMAL;
     }
 
@@ -68,7 +68,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
                 Holder = new MoreHolder(hasMore());
             } else {
                 //加载视图，并findViewById查找控件
-                Holder = getHolder();
+                Holder = getHolder(position);
             }
 
         } else {
@@ -127,7 +127,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         return  false;
     }
 
-    public abstract BaseHolder<T> getHolder();
+    public abstract BaseHolder<T> getHolder(int position);
     public abstract ArrayList<T> onloadMore();
 
     public int getDataSize(){

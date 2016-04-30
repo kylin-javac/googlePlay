@@ -32,6 +32,7 @@ public class AppProtocol extends BaseProtocol<ArrayList<AppInfo>> {
                 info.setStars(jO1.getDouble("stars"));
                 appInfos.add(info);
             }
+
             return appInfos;
         } catch (JSONException e) {
             e.printStackTrace();

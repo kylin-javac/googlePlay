@@ -13,6 +13,7 @@ import ligang.huse.cn.googleplay.domain.AppInfo;
  */
 public class HomeProtocol extends BaseProtocol<ArrayList<AppInfo>> {
     ArrayList<AppInfo> appInfos = new ArrayList<>();
+    private ArrayList<String> mPicture;
 
     @Override
     public ArrayList<AppInfo> ParseData(String result) {
@@ -32,6 +33,11 @@ public class HomeProtocol extends BaseProtocol<ArrayList<AppInfo>> {
                 info.setStars(jO1.getDouble("stars"));
                 appInfos.add(info);
             }
+            JSONArray ja1 = jO.getJSONArray("picture");
+            mPicture = new ArrayList<>();
+            for(int k=0;k<ja1.length();k++){
+                mPicture.add(ja1.getString(k));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -46,5 +52,8 @@ public class HomeProtocol extends BaseProtocol<ArrayList<AppInfo>> {
     @Override
     public String getParms() {
         return "";
+    }
+    public ArrayList<String>getPicture(){
+        return  mPicture;
     }
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 
 import ligang.huse.cn.googleplay.R;
 import ligang.huse.cn.googleplay.ui.fragment.BaseFragment;
@@ -23,6 +24,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mPagerTab = (PagerTab) findViewById(R.id.pager_tab);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mAdapter = new MyAdapter(getSupportFragmentManager());
@@ -47,7 +49,15 @@ public class MainActivity extends BaseActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+        initActionBar();
     }
+
+
+    public void initActionBar(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setLogo(R.drawable.ic_launcher);
+    }
+
 
     class MyAdapter extends FragmentPagerAdapter {
 
