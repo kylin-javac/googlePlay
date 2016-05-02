@@ -34,7 +34,6 @@ public class AppHolder extends BaseHolder<AppInfo> {
         mIvCon = (ImageView) view.findViewById(R.id.iv_con);
         mTvName = (TextView) view.findViewById(R.id.tv_name);
         mTvSize = (TextView) view.findViewById(R.id.tv_size);
-        mIvDownload = (ImageView) view.findViewById(R.id.iv_download);
         mRbStart = (RatingBar) view.findViewById(R.id.rb_start);
         mDesc = (TextView) view.findViewById(R.id.desc);
         mBitmapUtils = BitmapsUtilsHelper.getInstance();

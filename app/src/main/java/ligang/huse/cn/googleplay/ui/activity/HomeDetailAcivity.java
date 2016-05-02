@@ -10,6 +10,7 @@ import ligang.huse.cn.googleplay.domain.AppInfo;
 import ligang.huse.cn.googleplay.http.protocol.HomeDeailProtocol;
 import ligang.huse.cn.googleplay.ui.holder.DetailAppInfoHolder;
 import ligang.huse.cn.googleplay.ui.holder.DetailDesHolder;
+import ligang.huse.cn.googleplay.ui.holder.DetailDownloadHolder;
 import ligang.huse.cn.googleplay.ui.holder.DetailPicHolder;
 import ligang.huse.cn.googleplay.ui.holder.DetailSafeHolder;
 import ligang.huse.cn.googleplay.ui.view.LoadingPager;
@@ -32,6 +33,7 @@ public class HomeDetailAcivity extends BaseActivity {
     private FrameLayout mFlDetailAppsafe;
     private HorizontalScrollView mHsv_detail_pics;
     private FrameLayout mFlDetailAppdes;
+    private FrameLayout mFlDetailAppdownload;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,21 +62,25 @@ public class HomeDetailAcivity extends BaseActivity {
         mFlDetailAppsafe = (FrameLayout)homeDeail.findViewById(R.id.fl_detail_appsafe);
         mHsv_detail_pics = (HorizontalScrollView) homeDeail.findViewById(R.id.hsv_detail_pics);
         mFlDetailAppdes = (FrameLayout) homeDeail.findViewById(R.id.fl_detail_appdes);
+        mFlDetailAppdownload = (FrameLayout) homeDeail.findViewById(R.id.fl_detail_appdownload);
 
         DetailAppInfoHolder appInfoHolder = new DetailAppInfoHolder();
         DetailSafeHolder safeHolder = new DetailSafeHolder();
         DetailPicHolder picHolder = new DetailPicHolder();
         DetailDesHolder desHolder = new DetailDesHolder();
+        DetailDownloadHolder downloadHolder = new DetailDownloadHolder();
 
         appInfoHolder.setData(mData);
         safeHolder.setData(mData);
         picHolder.setData(mData);
         desHolder.setData(mData);
+        downloadHolder.setData(mData);
 
         mFlDetailAppinfo.addView(appInfoHolder.getRootView());
         mFlDetailAppsafe.addView(safeHolder.getRootView());
         mHsv_detail_pics.addView(picHolder.getRootView());
         mFlDetailAppdes.addView(desHolder.getRootView());
+        mFlDetailAppdownload.addView(downloadHolder.getRootView());
         return homeDeail;
     }
 

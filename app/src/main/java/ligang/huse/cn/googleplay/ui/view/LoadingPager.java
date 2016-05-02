@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import ligang.huse.cn.googleplay.R;
+import ligang.huse.cn.googleplay.manager.ThreadManager;
 import ligang.huse.cn.googleplay.utils.UiUitls;
 
 /**
@@ -101,8 +102,8 @@ public abstract class LoadingPager extends FrameLayout {
         if (mCurrentState != STATE_LOADE_LOADING) {// 如果当前没有加载, 就开始加载数据
 
             mCurrentState = STATE_LOADE_LOADING;
-
-            new Thread() {
+            //使用线程池进行数据加载
+            ThreadManager.getInstance().execute(new Runnable() {
                 @Override
                 public void run() {
                     final ResultState resultState = onLoad();
@@ -120,7 +121,9 @@ public abstract class LoadingPager extends FrameLayout {
                         }
                     });
                 }
-            }.start();
+            });
+
+
         }
     }
 

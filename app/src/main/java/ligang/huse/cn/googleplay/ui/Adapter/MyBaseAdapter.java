@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import ligang.huse.cn.googleplay.manager.ThreadManager;
 import ligang.huse.cn.googleplay.ui.holder.BaseHolder;
 import ligang.huse.cn.googleplay.ui.holder.MoreHolder;
 import ligang.huse.cn.googleplay.utils.UiUitls;
@@ -79,8 +80,8 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
             //加载数据
             Holder.setData(getItem(position));
         } else {
-            MoreHolder moreHolder= (MoreHolder) Holder;
-            if(moreHolder!=null){
+            MoreHolder moreHolder = (MoreHolder) Holder;
+            if (moreHolder != null) {
                 loadMore(moreHolder);
             }
         }
@@ -88,12 +89,15 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         //返回视图
         return Holder.getRootView();
     }
-    private boolean isloadMore=false;
+
+    private boolean isloadMore = false;
+
     //加载更多数据
-    public void loadMore(final MoreHolder moreHolder){
-        if(!isloadMore) {
-            isloadMore=true;
-            new Thread() {
+    public void loadMore(final MoreHolder moreHolder) {
+        if (!isloadMore) {
+            isloadMore = true;
+            //使用线程池进行数据加载
+            ThreadManager.getInstance().execute(new Runnable() {
                 @Override
                 public void run() {
                     final ArrayList<T> moreData = onloadMore();
@@ -113,24 +117,23 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
                             } else {
                                 moreHolder.setData(MoreHolder.STATE_MORE_ERROR);//更多数据加载失败
                             }
-                            isloadMore=false;
+                            isloadMore = false;
                         }
                     });
-
                 }
-            }.start();
+            });
         }
-
     }
 
-    public boolean hasMore(){
-        return  false;
+    public boolean hasMore() {
+        return false;
     }
 
     public abstract BaseHolder<T> getHolder(int position);
+
     public abstract ArrayList<T> onloadMore();
 
-    public int getDataSize(){
-        return  data.size();
+    public int getDataSize() {
+        return data.size();
     }
 }
